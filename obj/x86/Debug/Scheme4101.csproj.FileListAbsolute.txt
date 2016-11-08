@@ -1,0 +1,12 @@
+C:\Users\Charles\Desktop\prog2\Csharp\bin\Debug\Scheme4101.exe
+C:\Users\Charles\Desktop\prog2\Csharp\bin\Debug\Scheme4101.pdb
+C:\Users\Charles\Desktop\prog2\Csharp\bin\Debug\SPP.dll
+C:\Users\Charles\Desktop\prog2\Csharp\obj\x86\Debug\Scheme4101.csprojResolveAssemblyReference.cache
+C:\Users\Charles\Desktop\prog2\Csharp\obj\x86\Debug\Scheme4101.exe
+C:\Users\Charles\Desktop\prog2\Csharp\obj\x86\Debug\Scheme4101.pdb
+C:\Users\Taylor\Desktop\prog2-master\Csharp\obj\x86\Debug\Scheme4101.exe
+C:\Users\Taylor\Desktop\prog2-master\Csharp\obj\x86\Debug\Scheme4101.pdb
+C:\Users\Taylor\Desktop\prog2-master\Csharp\bin\Debug\Scheme4101.exe
+C:\Users\Taylor\Desktop\prog2-master\Csharp\bin\Debug\Scheme4101.pdb
+C:\Users\Taylor\Desktop\prog2-master\Csharp\bin\Debug\SPP.dll
+C:\Users\Taylor\Desktop\prog2-master\Csharp\obj\x86\Debug\Scheme4101.csprojResolveAssemblyReference.cache
