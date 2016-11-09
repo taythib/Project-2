@@ -51,6 +51,7 @@ namespace Tree
             Node arg1 = args.getCar();
             Node arg2 = Nil.getInstance();
             String symName = symbol.getName();
+
             if (!args.getCdr().isNull())
                 arg2 = args.getCdr().getCar();
             if (symName.Equals("symbol?"))
@@ -108,7 +109,6 @@ namespace Tree
             if (symName.Equals("read"))
                 // parse tree
             if (symName.Equals("write"))
-                    // pretty printer
                 arg1.print(0);
             if (symName.Equals("display"))
                 // i dont know

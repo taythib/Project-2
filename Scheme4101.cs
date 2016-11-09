@@ -51,6 +51,17 @@ public class Scheme4101
 
         // TODO: Create and populate the built-in environment and
         // create the top-level environment
+        Tree.Environment builtEnv = new Tree.Environment();
+
+        Ident builtFunc = new Ident("symbol?");
+        builtEnv.define(builtFunc, new BuiltIn(builtFunc));
+        builtFunc = new Ident("number?");
+        builtEnv.define(builtFunc, new BuiltIn(builtFunc));
+        builtFunc = new Ident("b+");
+        builtEnv.define(builtFunc, new BuiltIn(builtFunc));
+        builtFunc = new Ident("b-");
+        builtEnv.define(builtFunc, new BuiltIn(builtFunc));
+
 
         // Read-eval-print loop
 
