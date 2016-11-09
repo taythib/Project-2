@@ -64,6 +64,7 @@ public class Scheme4101
 
 
         // Read-eval-print loop
+        Tree.Environment global = new Tree.Environment(builtEnv);
 
         // TODO: print prompt and evaluate the expression
         root = (Node) parser.parseExp();

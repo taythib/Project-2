@@ -14,6 +14,9 @@
 // the function symbol.
 
 using System;
+using Parse;
+using Tokens;
+using Tree;
 
 namespace Tree
 {
@@ -107,7 +110,12 @@ namespace Tree
             if (symName.Equals("procedure?"))
                 return BoolLit.getInstance(arg1.isProcedure());
             if (symName.Equals("read"))
-                // parse tree
+            {
+                Scanner scanner = new Scanner(Console.In);
+                TreeBuilder builder = new TreeBuilder();
+                Parser parser = new Parser(scanner, builder);
+                Node root = (Node)parser.parseExp();
+            }
             if (symName.Equals("write"))
                 arg1.print(0);
             if (symName.Equals("display"))
