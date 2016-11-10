@@ -1,4 +1,4 @@
-// Nil -- Parse tree node class for representing the empty list
+// Void -- Parse tree node class used for returning an empty class for cleaner printing
 
 using System;
 

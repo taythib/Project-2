@@ -99,20 +99,15 @@ namespace Tree
                 return env.lookup(id);
             else
                 // get the value out of the list we got from find()
-		return val.getCar();
+		        return val.getCar();
         }
 
 
         public void define(Node id, Node val)
         {
             Node temp = find(id, this.frame);
-            if (temp == null)
-            {
-                Node node = new Cons(id, new Cons(val, Nil.getInstance()));
-                this.frame = new Cons(node, this.frame);
-            }
-            else
-               Console.WriteLine("error");
+            Node node = new Cons(id, new Cons(val, Nil.getInstance()));
+            this.frame = new Cons(node, this.frame);
         }
 
 

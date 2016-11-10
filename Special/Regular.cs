@@ -13,6 +13,7 @@ namespace Tree
             Printer.printRegular(t, n, p);
         }
 
+        // sets first as function, args as function arguments, and performs apply() on first
         public override Node eval(Node t, Environment env)
         {
             Node first = t.getCar();

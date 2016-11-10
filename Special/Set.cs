@@ -15,7 +15,16 @@ namespace Tree
 
         public override Node eval(Node t, Environment env)
         {
-            throw new NotImplementedException();
+            Node var = t.getCdr().getCar();
+            Node val = t.getCdr().getCdr().getCar();
+
+            if(env.lookup(var) is Nil)
+            {
+                // return error
+            }
+
+            env.define(var, val);
+            return Void.getInstance();
         }
     }
 }
