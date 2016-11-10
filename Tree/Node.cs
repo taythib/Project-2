@@ -40,6 +40,7 @@ namespace Tree
         public virtual bool isString() { return false; }  // StringLit
         public virtual bool isSymbol() { return false; }  // Ident
         public virtual bool isNull()   { return false; }  // Nil
+        public virtual bool isVoid() { return false; }  // Void
         public virtual bool isPair()   { return false; }  // Cons
         public virtual bool isProcedure() { return false; }  // Closure
 

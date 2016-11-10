@@ -16,23 +16,24 @@ namespace Tree
         public override Node eval(Node t, Environment env)
         {
             Node first = t.getCar();
-            Node temp = t;
-            while(!(t.getCdr() is Nil))
-            {
-                temp = t.getCdr().getCar();
-                temp = env.lookup(t.getCdr().getCar());
-                t = t.getCdr();
-                temp = temp.getCdr();
-            }
+            Node args = getArgs(t.getCdr(), env);
 
             if (env.lookup(first).isProcedure())
             {
                 first = env.lookup(first);
-                return first.apply(argList);
+                return first.apply(args);
             }
 
             return Nil.getInstance();
 
+        }
+
+        // gets the function variable list, performs a lookup, and constructs a new list of their values for apply()
+        private Node getArgs(Node t, Environment env)
+        {
+            if (t is Nil)
+                return Nil.getInstance();
+            return new Cons(env.lookup(t.getCar()), getArgs(t.getCdr(), env));
         }
     }
 }

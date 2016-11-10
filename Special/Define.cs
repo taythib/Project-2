@@ -28,7 +28,7 @@ namespace Tree
                 env.define(car1.getCar(), closureFun);
 
             }
-            return Nil.getInstance();
+            return Void.getInstance();
         }
     }
 }
