@@ -62,15 +62,14 @@ public class Scheme4101
         builtFunc = new Ident("b-");
         builtEnv.define(builtFunc, new BuiltIn(builtFunc));
 
+        Tree.Environment env = new Tree.Environment(builtEnv);
 
         // Read-eval-print loop
-        Tree.Environment global = new Tree.Environment(builtEnv);
-
         // TODO: print prompt and evaluate the expression
         root = (Node) parser.parseExp();
         while (root != null) 
         {
-            root.print(0);
+            root.eval(env).print(0);
             root = (Node) parser.parseExp();
         }
 

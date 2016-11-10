@@ -12,17 +12,21 @@ namespace Tree
         {
             Printer.printDefine(t, n, p);
         }
-        public override void eval(Node t, Environment env)
+        public override Node eval(Node t, Environment env)
         {
-            Node node = t.getCdr().getCar();
-            Node val = t.getCdr().getCdr().getCar();
+            Node car1 = t.getCdr().getCar();
+            Node car2 = t.getCdr().getCdr().getCar();
+            Node car3 = t.getCdr().getCdr().getCar();
 
-            if (node.isSymbol())
-                env.define(node, val);
+            if (car1.isSymbol())
+                // if first arg is not a list, define variable
+                env.define(car1, car2);
             else
             {
-                Closure closure = new Closure(new Cons(node, val), env);
-                env.define(t.getCdr().getCar().getCar(), closure);
+                // if first arg is list, define function and function body
+                Cons funcbody = new Cons(car1.getCdr(), t.getCdr().getCdr());
+                Node closureFun = new Cons(new Ident("lambda"), funcbody).eval(env);
+                env.define(car1.getCar(), closureFun);
 
             }
         }

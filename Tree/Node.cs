@@ -77,7 +77,14 @@ namespace Tree
         // Returns nil for now, might be changed in future, along with error message
         public virtual Node apply(Node d)
         {
-            Console.Error.WriteLine("Error: Apply() should be used for BuiltIn or Closure");
+            Console.Error.WriteLine("Error: apply() should be used for BuiltIn or Closure");
+            return Nil.getInstance();
+        }
+
+        // Returns nil for now, might be changed in future, along with error message
+        public virtual Node eval(Environment env)
+        {
+            Console.Error.WriteLine("Error: eval() should be used for BuiltIn or Closure");
             return Nil.getInstance();
         }
 
