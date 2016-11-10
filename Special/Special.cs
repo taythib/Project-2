@@ -12,7 +12,7 @@ namespace Tree
     {
         public abstract void print(Node t, int n, bool p);
 
-        public abstract Node eval(Node t, Environment Env);
+        public abstract Node eval(Node t, Environment env);
     }
 }
 

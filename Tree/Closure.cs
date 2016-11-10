@@ -40,13 +40,18 @@ namespace Tree
             Console.WriteLine('}');
         }
 
-        // TODO: The method apply() should be defined in class Node
-        // to report an error.  It should be overridden only in classes
-        // BuiltIn and Closure.
-        public  Node apply (Node args)
+        public override Node apply (Node args)
         {
-            Environment funcEnv = new Tree.Environment(env);
-
+            Environment funcEnv = new Environment(env);
+            Node temp = fun.getCdr().getCar();
+            while (temp != Nil.getInstance())
+            {
+                funcEnv.define(temp.getCar(), args.getCar());
+                temp = temp.getCdr();
+                args = args.getCdr();
+            }
+            Node body = new Cons(new Ident("begin"), fun.getCdr().getCdr());
+            return body.eval(funcEnv);
         }
     }    
 }

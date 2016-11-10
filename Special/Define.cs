@@ -16,7 +16,6 @@ namespace Tree
         {
             Node car1 = t.getCdr().getCar();
             Node car2 = t.getCdr().getCdr().getCar();
-            Node car3 = t.getCdr().getCdr().getCar();
 
             if (car1.isSymbol())
                 // if first arg is not a list, define variable
@@ -29,6 +28,7 @@ namespace Tree
                 env.define(car1.getCar(), closureFun);
 
             }
+            return Nil.getInstance();
         }
     }
 }

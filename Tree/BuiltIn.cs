@@ -30,7 +30,7 @@ namespace Tree
 
         // TODO: The method isProcedure() should be defined in
         // class Node to return false.
-        public /* override */ bool isProcedure() { return true; }
+        public override bool isProcedure() { return true; }
 
         public override void print(int n)
         {
@@ -98,9 +98,15 @@ namespace Tree
             if (symName.Equals("cdr"))
                 return arg1.getCdr();
             if (symName.Equals("set-car!"))
+            {
                 arg1.setCar(arg2);
+                return Nil.getInstance();
+            }
             if (symName.Equals("set-cdr!"))
+            {
                 arg1.setCdr(arg2);
+                return Nil.getInstance();
+            }
             if (symName.Equals("null?"))
                 return BoolLit.getInstance(arg1.isNull());
             if (symName.Equals("pair?"))
@@ -115,19 +121,28 @@ namespace Tree
                 TreeBuilder builder = new TreeBuilder();
                 Parser parser = new Parser(scanner, builder);
                 Node root = (Node)parser.parseExp();
+                return Nil.getInstance();
             }
             if (symName.Equals("write"))
+            {
                 arg1.print(0);
-            if (symName.Equals("display"))
-                // i dont know
-            if (symName.Equals("newline"))
-                // returns newline?
-            if (symName.Equals("eval"))
-                // need to figure out eval
-            if (symName.Equals("apply"))
-                // apply
-            if (symName.Equals("interaction-environment"))
-                // pointer to env?
+                return Nil.getInstance();
+            }
+
+
+            /*
+        if (symName.Equals("display"))
+            // i dont know
+        if (symName.Equals("newline"))
+            // returns newline?
+        if (symName.Equals("eval"))
+            // need to figure out eval
+        if (symName.Equals("apply"))
+            // apply
+        if (symName.Equals("interaction-environment"))
+            // pointer to env?
+            */
+            return Nil.getInstance();
         }
     }
 }

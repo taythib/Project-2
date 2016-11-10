@@ -12,6 +12,11 @@ namespace Tree
         {
             Printer.printLet(t, n, p);
         }
+
+        public override Node eval(Node t, Environment env)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
