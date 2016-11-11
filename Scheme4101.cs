@@ -61,6 +61,8 @@ public class Scheme4101
         builtEnv.define(builtFunc, new BuiltIn(builtFunc));
         builtFunc = new Ident("b-");
         builtEnv.define(builtFunc, new BuiltIn(builtFunc));
+        builtFunc = new Ident("b<");
+        builtEnv.define(builtFunc, new BuiltIn(builtFunc));
 
         Tree.Environment env = new Tree.Environment(builtEnv);
 

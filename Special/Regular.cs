@@ -17,7 +17,9 @@ namespace Tree
         public override Node eval(Node t, Environment env)
         {
             Node first = t.getCar();
-            Node args = getArgs(t.getCdr(), env);
+            Node args = t.getCdr();
+            if (t.getCdr().getCar().isSymbol())
+                args = getArgs(t.getCdr(), env);
 
             if (env.lookup(first).isProcedure())
             {

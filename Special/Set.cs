@@ -18,11 +18,6 @@ namespace Tree
             Node var = t.getCdr().getCar();
             Node val = t.getCdr().getCdr().getCar();
 
-            if(env.lookup(var) is Nil)
-            {
-                // return error
-            }
-
             env.define(var, val);
             return Void.getInstance();
         }

@@ -21,7 +21,6 @@ namespace Tree
                 if (t.getCar() is Cons)
                 {
                     Console.Error.WriteLine("Error: unexpected argument");
-                    throw new InvalidOperationException();
                 }
                 if (t.getCar().getCar().eval(env) == BoolLit.getInstance(true))
                 {
@@ -37,7 +36,6 @@ namespace Tree
                 else if (t.getCar().getCar().eval(env) != BoolLit.getInstance(false))
                 {
                     Console.Error.WriteLine("Error: unexpected argument");
-                    throw new InvalidOperationException();
                 }
             }
             // get else to work...?

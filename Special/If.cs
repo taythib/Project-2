@@ -15,7 +15,18 @@ namespace Tree
 
         public override Node eval(Node t, Environment env)
         {
-            throw new NotImplementedException();
+            Node test = t.getCdr().getCar();
+            Node consq = t.getCdr().getCdr();
+            Node alt = consq.getCdr();
+
+            if (test.eval(env) == BoolLit.getInstance(true))
+            {
+                return consq.getCar().eval(env);
+            }
+            else if(!(alt is Nil))
+                return alt.getCar().eval(env);
+            Console.Error.WriteLine("Error: If not properly formatted");
+            return Nil.getInstance();
         }
     }
 }
