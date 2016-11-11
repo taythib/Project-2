@@ -18,28 +18,21 @@ namespace Tree
             while (!(t.getCdr() is Nil))
             {
                 t = t.getCdr();
-                if (t.getCar() is Cons)
+                if (!(t.getCar() is Cons))
                 {
                     Console.Error.WriteLine("Error: unexpected argument");
                 }
-                if (t.getCar().getCar().eval(env) == BoolLit.getInstance(true))
+                Node n = t.getCar().getCar().eval(env);
+                if (t.getCar().getCar().eval(env).Equals(BoolLit.getInstance(true)))
                 {
                     t = t.getCar();
-                    while (!(t.getCdr() is Nil))
-                    {
-                        t = t.getCdr();
-                        if (!(t.getCdr() is Nil)) break;
-                        t.getCar().eval(env);
-                    }
-                    return t.getCar().eval(env);
+
+                    return t.getCdr().getCar().eval(env);
                 }
-                else if (t.getCar().getCar().eval(env) != BoolLit.getInstance(false))
-                {
-                    Console.Error.WriteLine("Error: unexpected argument");
-                }
+                
             }
             // get else to work...?
-            return Nil.getInstance();
+            return Void.getInstance();
         }
     }
 }

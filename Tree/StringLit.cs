@@ -22,6 +22,17 @@ namespace Tree
         {
             return true;
         }
+
+        public void displayPrint()
+        {
+                stringVal = stringVal.Replace("\"", "");
+                Console.WriteLine(stringVal);
+        }
+
+        public override Node eval(Environment env)
+        {
+            return this;
+        }
     }
 }
 

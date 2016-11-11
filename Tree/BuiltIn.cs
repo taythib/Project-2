@@ -23,8 +23,13 @@ namespace Tree
     public class BuiltIn : Node
     {
         private Node symbol;            // the Ident for the built-in function
+        private Environment global;
 
-        public BuiltIn(Node s) { symbol = s; }
+        public BuiltIn(Node s) {
+            symbol = s;
+            global = Scheme4101.globalEnv;
+        }
+
 
         public Node getSymbol() { return symbol; }
 
@@ -51,10 +56,21 @@ namespace Tree
         public override Node apply(Node args)
         {
             // return new StringLit("Error: BuiltIn.apply not yet implemented");
-            Node arg1 = args.getCar();
+            Node arg1 = Nil.getInstance();
+            if(!(args.getCar() is Nil))
+                arg1 = args.getCar();
             Node arg2 = Nil.getInstance();
             String symName = symbol.getName();
-
+            if (symName.Equals("interaction-environment"))
+            {
+                Console.Write("success");
+                return global;
+            }
+            if (symName.Equals("newline"))
+            {
+                Console.WriteLine();
+                return Void.getInstance();
+            }
             if (!args.getCdr().isNull())
                 arg2 = args.getCdr().getCar();
             if (symName.Equals("symbol?"))
@@ -93,6 +109,21 @@ namespace Tree
                 if (arg1.isNumber() & arg2.isNumber())
                     return BoolLit.getInstance(arg1.getVal() < arg2.getVal());
             }
+            if (symName.Equals("b>"))
+            {
+                if (arg1.isNumber() & arg2.isNumber())
+                    return BoolLit.getInstance(arg1.getVal() > arg2.getVal());
+            }
+            if (symName.Equals("b>="))
+            {
+                if (arg1.isNumber() & arg2.isNumber())
+                    return BoolLit.getInstance(arg1.getVal() >= arg2.getVal());
+            }
+            if (symName.Equals("b<="))
+            {
+                if (arg1.isNumber() & arg2.isNumber())
+                    return BoolLit.getInstance(arg1.getVal() <= arg2.getVal());
+            }
             if (symName.Equals("car"))
                 return arg1.getCar();
             if (symName.Equals("cdr"))
@@ -121,28 +152,25 @@ namespace Tree
                 TreeBuilder builder = new TreeBuilder();
                 Parser parser = new Parser(scanner, builder);
                 Node root = (Node)parser.parseExp();
-                return Nil.getInstance();
+                return Void.getInstance();
             }
             if (symName.Equals("write"))
             {
                 arg1.print(0);
-                return Nil.getInstance();
+                return Void.getInstance();
             }
-
-
-            /*
-        if (symName.Equals("display"))
-            // i dont know
-        if (symName.Equals("newline"))
-            // returns newline?
-        if (symName.Equals("eval"))
-            // need to figure out eval
-        if (symName.Equals("apply"))
-            // apply
-        if (symName.Equals("interaction-environment"))
-            // pointer to env?
-            */
-            return Nil.getInstance();
+            if (symName.Equals("display"))
+            {
+                ((StringLit)arg1).displayPrint();
+                return Void.getInstance();
+            }
+            if (symName.Equals("eval"))
+            {
+                return arg1.eval((Environment)arg2);
+            }
+            if (symName.Equals("apply"))
+                return arg1.apply(arg2);
+            return Void.getInstance();
         }
     }
 }
