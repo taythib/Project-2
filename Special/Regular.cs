@@ -32,6 +32,8 @@ namespace Tree
                     Node temp = first.apply(args);
                     return temp;
                 }
+                else
+                    Console.WriteLine("Error: Procedure not specified.");
             }
             else
             {
