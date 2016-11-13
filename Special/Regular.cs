@@ -23,9 +23,8 @@ namespace Tree
             {
                 if (t.getCdr().getCar().isSymbol())
                     args = getArgs(t.getCdr(), env);
-                if (t.getCdr().getCar().isPair())
+                if (t.getCdr().getCar().isPair() && !t.getCdr().getCar().getCar().isNumber())
                     args = new Cons(t.getCdr().getCar().eval(env), Nil.getInstance());
-
                 if (env.lookup(first).isProcedure())
                 {
                     first = env.lookup(first);

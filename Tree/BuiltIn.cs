@@ -57,13 +57,9 @@ namespace Tree
         {
             // return new StringLit("Error: BuiltIn.apply not yet implemented");
             Node arg1 = Nil.getInstance();
-            if(!(args.getCar() is Nil))
-                arg1 = args.getCar();
-            Node arg2 = Nil.getInstance();
             String symName = symbol.getName();
             if (symName.Equals("interaction-environment"))
             {
-                Console.Write("success");
                 return global;
             }
             if (symName.Equals("newline"))
@@ -71,6 +67,9 @@ namespace Tree
                 Console.WriteLine();
                 return Void.getInstance();
             }
+            if (!(args.getCar() is Nil))
+                arg1 = args.getCar();
+            Node arg2 = Nil.getInstance();
             if (!args.getCdr().isNull())
                 arg2 = args.getCdr().getCar();
             if (symName.Equals("symbol?"))
@@ -131,19 +130,23 @@ namespace Tree
             if (symName.Equals("set-car!"))
             {
                 arg1.setCar(arg2);
-                return Nil.getInstance();
+                return Void.getInstance();
             }
             if (symName.Equals("set-cdr!"))
             {
                 arg1.setCdr(arg2);
-                return Nil.getInstance();
+                return Void.getInstance();
             }
             if (symName.Equals("null?"))
                 return BoolLit.getInstance(arg1.isNull());
             if (symName.Equals("pair?"))
                 return BoolLit.getInstance(arg1.isPair());
             if (symName.Equals("eq?"))
+            {
+                if (arg1.isSymbol() && arg2.isSymbol())
+                    return BoolLit.getInstance(arg1.getName().Equals(arg2.getName()));
                 return BoolLit.getInstance(arg1 == arg2);
+            }
             if (symName.Equals("procedure?"))
                 return BoolLit.getInstance(arg1.isProcedure());
             if (symName.Equals("read"))

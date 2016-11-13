@@ -107,20 +107,6 @@ public class Scheme4101
         builtEnv.define(builtFunc, new BuiltIn(builtFunc));
         builtFunc = new Ident("<=");
         builtEnv.define(builtFunc, new BuiltIn(builtFunc));
-        builtFunc = new Ident("list");
-        builtEnv.define(builtFunc, new BuiltIn(builtFunc));
-        builtFunc = new Ident("cadr");
-        builtEnv.define(builtFunc, new BuiltIn(builtFunc));
-        builtFunc = new Ident("caddr");
-        builtEnv.define(builtFunc, new BuiltIn(builtFunc));
-        builtFunc = new Ident("equal?");
-        builtEnv.define(builtFunc, new BuiltIn(builtFunc));
-        builtFunc = new Ident("map");
-        builtEnv.define(builtFunc, new BuiltIn(builtFunc));
-        builtFunc = new Ident("assq");
-        builtEnv.define(builtFunc, new BuiltIn(builtFunc));
-        builtFunc = new Ident("reverse");
-        builtEnv.define(builtFunc, new BuiltIn(builtFunc));
 
         // Read-eval-print loop
         // TODO: print prompt and evaluate the expression
